@@ -17,7 +17,7 @@ The beginning of the code contains the toy data preparation and the transformati
 
 # Technical Insights 
 
-If you are working with high dimensional data it is advisable to use residual connections in the encoder and decoder, especially in the encoder as each dimension represents a local minimum that represents potential for incomplete training. This happens because during training the model can output clouds that produce partially diagonalized covariance matrices creating a fully diagonal covariance matrix requires a significant change in model output. Residual connections solved this problem for me.
+If you are working with high dimensional data it is advisable to use residual connections in the encoder and decoder, especially in the encoder as each dimension represents a local minimum that represents potential for incomplete training. This happens because during training the model can output clouds that produce partially diagonalized covariance matrices creating a fully diagonal covariance matrix requires a significant change in model output. Residual connections alleviated the problem, but it still persists partially. Another major importance for good convergence is proper weight initializations. A higher gain value for the Xavier initialization can often lead to plateauing at a loss of 1. If the loss plateaus at around one after a few dozen epochs, reinitialize the weights and start again. To fully finetune this example at a lower learning rate takes over 500 epochs.
 
 The model worked surprisingly well even for very hard transformations especially rotations appeared to be very easy to undo. 
 
